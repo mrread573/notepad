@@ -1,0 +1,20 @@
+{% extends "notepads/base.html" %}
+{% block page_header %}
+<div class="jumbotron">
+    <h1 class="display-3">Share notepad</h1>
+    <h3>Evaluations:</h3>
+    {% for evaluation in evaluations %}
+      <div class="card mb-3">
+          <h4 class="card-header">Author:{{evaluation.owner}} Create time:{{evaluation.date_added|date:'M d,Y H:i'}}</h4>
+          <div class="card-body">{{evaluation.text}}</div>
+      </div>
+    {% empty %}
+      <h3>No evaluation have been added yet.</h3>
+    {% endfor %}
+    {% if user.is_authenticated %}
+      <h3><a href="{% url 'notepads:evaluation' %}">Evaluation &raquo;</a></h3>
+    {% else %}
+      <h3><a href="{% url 'users:register' %}">Register &raquo;</a></h3>
+    {% endif %}
+</div>
+{% endblock page_header %}

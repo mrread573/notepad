@@ -1,0 +1,10 @@
+{% extends "notepads/base.html" %}
+{% block page_header %}
+<h1>{{note.title}}</h1>
+{% endblock page_header %}
+{% block content %}
+<div class="card mb-3">
+  <h4 class="card-header">Id:{{note.id}} Author:{{note.owner}} Create time:{{note.date_added|date:'M d,Y H:i'}} <small><a href="{% url 'notepads:edit_note' note.id %}">Edit note</a> </small></h4>
+  <div class="card-body">{{note.text}}</div>
+</div>
+{% endblock content %}

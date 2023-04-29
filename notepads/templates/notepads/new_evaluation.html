@@ -1,0 +1,14 @@
+{% extends "notepads/base.html" %}
+{% load bootstrap4 %}
+{% block page_header %}
+<h2>Add new evaluation:</h2>
+{% endblock page_header %}
+{% block content %}
+<form method="post" action="{% url 'notepads:evaluation' %}">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  {% buttons %}
+    <button name="submit" class="bth bth-primary">Add new evaluation</button>
+  {% endbuttons %}
+</form>
+{% endblock content %}

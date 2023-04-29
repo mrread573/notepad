@@ -1,0 +1,12 @@
+{% extends "notepads/base.html" %}
+{% load bootstrap4 %}
+{% block page_header %}
+<form method="post" action="{% url 'users:register' %}">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  {% buttons %}
+    <button name="submit" class="bth bth-primary">Register</button>
+  {% endbuttons %}
+  <input type="hidden" name="next" value="{% url 'notepads:index' %}" />
+</form>
+{% endblock page_header %}

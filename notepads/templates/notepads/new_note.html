@@ -1,0 +1,14 @@
+{% extends "notepads/base.html" %}
+{% load bootstrap4 %}
+{% block page_header %}
+<h2>Add new note:</h2>
+{% endblock page_header %}
+{% block content %}
+<form method="post" action="{% url 'notepads:new_note' %}">
+  {% csrf_token %}
+  {% bootstrap_form form %}
+  {% buttons %}
+    <button name="submit" class="bth bth-primary">Add new note</button>
+  {% endbuttons %}
+</form>
+{% endblock content %}
